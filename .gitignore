@@ -1,0 +1,11 @@
+.vagrant
+ubuntu-bionic-18.04-cloudimg-console.log
+vendor
+.editorconfig
+web/sites/default/files
+.gitattributes
+config/.htaccess
+web/core/
+web/sites/default/settings.php
+/web/themes/contrib
+/web/modules/contrib
