@@ -16,7 +16,7 @@ debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/app-pass password vagran
 debconf-set-selections <<< "phpmyadmin phpmyadmin/app-password-confirm password vagrant"
 
 ###Installing packages 
-sudo apt-get -y install apache2 mysql-server php7.1 php7.1-mysql php7.1-gd php7.1-xml php7.1-mcrypt php7.1-mbstring zip unzip php7.1-zip php7.1-curl openssl phpmyadmin
+sudo apt-get -y -qq install apache2 mysql-server php7.1 php7.1-mysql php7.1-gd php7.1-xml php7.1-mcrypt php7.1-mbstring zip unzip php7.1-zip php7.1-curl openssl phpmyadmin
 
 ###Setting PHP cli version to selected version
 sudo update-alternatives --set php /usr/bin/php7.1
@@ -56,3 +56,12 @@ echo "\$settings['trusted_host_patterns'] = ['^.+\.intranet$'];" >> /vagrant/web
 
 ###Run cron
 ./vendor/drush/drush/drush -y cron
+
+###Info for using the server
+echo "###Installation complete###"
+echo "The server has been created and drupal has been installed"
+echo "if you had config files in de config directory those have been imported"
+echo "To open the site go to http://webserver.intranet or http://192.168.33.10"
+echo "PhpMyAdmin is available on /phpmyadmin"
+echo "HTTPS connection is also available but the server is using a self-signed certificate so you will get warnings"
+echo "to log into the server use the 'vagrant ssh' command"
