@@ -3,9 +3,16 @@
     "description": "This project provides a vagrant box for drupal development",
     "type": "project",
     "license": "GPLv3",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+     ],
     "require": {
         "drupal/recommended-project": "~8.0",
-        "drush/drush": "^10.2"
+        "drush/drush": "^10.2",
+        "drupal/gutenberg": "^1.10"
     },
 	"extra": {
         "drupal-scaffold": {
