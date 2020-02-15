@@ -43,6 +43,7 @@ curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/loca
 
 ###PHP Dependency installation
 cd /vagrant
+sudo composer --global config process-timeout 2000
 sudo composer install
 
 #Append config directory to default settings
