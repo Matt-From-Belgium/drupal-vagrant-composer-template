@@ -12,7 +12,7 @@
     "require": {
         "drupal/recommended-project": "~8.0",
         "drush/drush": "^10.2",
-        "drupal/gutenberg": "^1.10"
+	"drupal/console": "~1.0"
     },
 	"extra": {
         "drupal-scaffold": {

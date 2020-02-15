@@ -46,6 +46,7 @@ cd /vagrant
 sudo composer --global config process-timeout 2000
 sudo composer install
 echo "alias drush='/vagrant/vendor/drush/drush/drush'" >> /home/vagrant/.bashrc
+echo "alias drupal='/vagrant/vendor/drupal/console/bin/drupal'" >> /home/vagrant/.bashrc
 
 #Append config directory to default settings
 echo "\$settings['config_sync_directory'] = '../config';" >> /vagrant/web/sites/default/default.settings.php
