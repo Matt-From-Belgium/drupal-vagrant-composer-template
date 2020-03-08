@@ -33,9 +33,11 @@ sudo apt-get -y install apache2 mysql-server php7.1 php7.1-mysql php7.1-gd php7.
 sudo cp /vagrant/.webserverfiles/000-default.conf /etc/apache2/sites-available/000-default.conf
 sudo cp /vagrant/.webserverfiles/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 sudo cp /vagrant/.webserverfiles/php.ini /etc/php/7.1/apache2/php.ini
+sudo cp /vagrant/.webserverfiles/xdebug.ini /etc/php/7.1/mods-available/xdebug.ini
 sudo a2enmod rewrite
 sudo a2enmod ssl
 sudo a2ensite default-ssl
+
 sudo apachectl restart
 
 
