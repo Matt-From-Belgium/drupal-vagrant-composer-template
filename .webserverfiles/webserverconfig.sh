@@ -57,6 +57,9 @@ echo "\$settings['config_sync_directory'] = '../config';" >> /vagrant/web/sites/
 #Set *.intranet as trusted host
 echo "\$settings['trusted_host_patterns'] = ['^.+\.intranet$'];" >> /vagrant/web/sites/default/default.settings.php
 
+#Set private file path
+echo "\# $settings['file_private_path'] = '../private';" >> /vagrant/web/sites/default/default.settings.php
+
 ###Install drupal and import configuration
 ./vendor/drush/drush/drush -y si minimal --db-url=mysql://root:vagrant@localhost/drupal --config-dir=/vagrant/config --account-pass=admin
 ./vendor/drush/drush/drush -y cr
