@@ -71,4 +71,9 @@ Vagrant.configure("2") do |config|
   #Configuratiescript voor webserver
   config.vm.provision "shell", path:".webserverfiles/webserverconfig.sh"
   
+  #Configuratie van hostnaam
+  config.hostmanager.enabled = true
+  config.hostmanager.manage_host = true
+  config.vm.hostname = 'webserver.intranet'
+
 end
