@@ -54,6 +54,9 @@ echo "alias drupal='/vagrant/vendor/drupal/console/bin/drupal'" >> /home/vagrant
 #Append config directory to default settings
 echo "\$settings['config_sync_directory'] = '../config';" >> /vagrant/web/sites/default/default.settings.php
 
+#Set *.intranet as trusted host
+echo "\$settings['trusted_host_patterns'] = ['^.+\.intranet$'];" >> /vagrant/web/sites/default/default.settings.php
+
 ###Install drupal and import configuration
 ./vendor/drush/drush/drush -y si minimal --db-url=mysql://root:vagrant@localhost/drupal --config-dir=/vagrant/config --account-pass=admin
 ./vendor/drush/drush/drush -y cr
