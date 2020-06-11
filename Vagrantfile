@@ -78,7 +78,7 @@ Vagrant.configure("2") do |config|
 
   # These values are the default options 
   config.bindfs.default_options = {
-    force_user:   'vagrant',
+    force_user:   'www-data',
     force_group:  'vagrant',
     perms:        'u=rwX:g=rwX:o=rD'
   }

@@ -30,10 +30,10 @@ openssl req -x509 -out /etc/ssl/certs/localhost.crt -keyout /etc/ssl/private/loc
 
 ###Setting up webserver
 sudo apt-get -y install apache2 mysql-server php7.3 php7.3-mysql php7.3-gd php7.3-xml php7.3-mcrypt php7.3-mbstring zip unzip php7.3-zip php7.3-curl
-sudo cp /vagrant/.webserverfiles/000-default.conf /etc/apache2/sites-available/000-default.conf
-sudo cp /vagrant/.webserverfiles/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
-sudo cp /vagrant/.webserverfiles/php.ini /etc/php/7.3/apache2/php.ini
-sudo cp /vagrant/.webserverfiles/xdebug.ini /etc/php/7.3/mods-available/xdebug.ini
+sudo cp /wwwroot/.webserverfiles/000-default.conf /etc/apache2/sites-available/000-default.conf
+sudo cp /wwwroot/.webserverfiles/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
+sudo cp /wwwroot/.webserverfiles/php.ini /etc/php/7.3/apache2/php.ini
+sudo cp /wwwroot/.webserverfiles/xdebug.ini /etc/php/7.3/mods-available/xdebug.ini
 sudo a2enmod rewrite
 sudo a2enmod ssl
 sudo a2ensite default-ssl
@@ -63,7 +63,7 @@ echo "\$settings['trusted_host_patterns'] = ['^.+\.intranet$'];" >> /wwwroot/web
 echo "\$settings['file_private_path'] = '../private';" >> /wwwroot/web/sites/default/default.settings.php
 
 ###Install drupal and import configuration
-./vendor/drush/drush/drush -y si minimal --db-url=mysql://root:vagrant@localhost/drupal --config-dir=/vagrant/config --account-pass=admin
+./vendor/drush/drush/drush -y si minimal --db-url=mysql://root:vagrant@localhost/drupal --config-dir=/wwwroot/config --account-pass=admin
 ./vendor/drush/drush/drush -y cr
 
 ###Run cron
