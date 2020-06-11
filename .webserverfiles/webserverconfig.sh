@@ -38,6 +38,8 @@ sudo a2enmod rewrite
 sudo a2enmod ssl
 sudo a2ensite default-ssl
 
+sudo usermod -a -G vagrant www-data
+
 sudo apachectl restart
 
 
@@ -45,20 +47,20 @@ sudo apachectl restart
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 
 ###PHP Dependency installation
-cd /vagrant
+cd /wwwroot
 sudo composer --global config process-timeout 2000
 sudo composer install
-echo "alias drush='/vagrant/vendor/drush/drush/drush'" >> /home/vagrant/.bashrc
-echo "alias drupal='/vagrant/vendor/drupal/console/bin/drupal'" >> /home/vagrant/.bashrc
+echo "alias drush='/wwwroot/vendor/drush/drush/drush'" >> /home/vagrant/.bashrc
+echo "alias drupal='/wwwroot/vendor/drupal/console/bin/drupal'" >> /home/vagrant/.bashrc
 
 #Append config directory to default settings
-echo "\$settings['config_sync_directory'] = '../config';" >> /vagrant/web/sites/default/default.settings.php
+echo "\$settings['config_sync_directory'] = '../config';" >> /wwwroot/web/sites/default/default.settings.php
 
 #Set *.intranet as trusted host
-echo "\$settings['trusted_host_patterns'] = ['^.+\.intranet$'];" >> /vagrant/web/sites/default/default.settings.php
+echo "\$settings['trusted_host_patterns'] = ['^.+\.intranet$'];" >> /wwwroot/web/sites/default/default.settings.php
 
 #Set private file path
-echo "\$settings['file_private_path'] = '../private';" >> /vagrant/web/sites/default/default.settings.php
+echo "\$settings['file_private_path'] = '../private';" >> /wwwroot/web/sites/default/default.settings.php
 
 ###Install drupal and import configuration
 ./vendor/drush/drush/drush -y si minimal --db-url=mysql://root:vagrant@localhost/drupal --config-dir=/vagrant/config --account-pass=admin

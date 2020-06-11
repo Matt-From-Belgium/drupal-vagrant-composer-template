@@ -76,4 +76,15 @@ Vagrant.configure("2") do |config|
   config.hostmanager.manage_host = true
   config.vm.hostname = 'webserver.intranet'
 
+  # These values are the default options 
+  config.bindfs.default_options = {
+    force_user:   'vagrant',
+    force_group:  'vagrant',
+    perms:        'u=rwX:g=rwX:o=rD'
+  }
+
+  config.vm.synced_folder ".", "/vagrant", type: "nfs"
+  config.bindfs.bind_folder "/vagrant", "/wwwroot"
+  config.bindfs.debug = true
+
 end
