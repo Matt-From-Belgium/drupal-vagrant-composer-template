@@ -48,8 +48,8 @@ curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/loca
 
 ###PHP Dependency installation
 cd /wwwroot
-sudo composer --global config process-timeout 2000
-sudo composer install
+composer --global config process-timeout 2000
+composer install
 echo "alias drush='/wwwroot/vendor/drush/drush/drush'" >> /home/vagrant/.bashrc
 echo "alias drupal='/wwwroot/vendor/drupal/console/bin/drupal'" >> /home/vagrant/.bashrc
 
