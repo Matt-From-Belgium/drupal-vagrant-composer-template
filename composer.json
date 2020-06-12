@@ -11,14 +11,20 @@
      ],
     "require": {
         "drupal/recommended-project": "~9.0",
-        "drush/drush": "^10.2"
+        "drush/drush": "^10.2",
+        "drupal/admin_toolbar": "^2.2"
     },
 	"extra": {
         "drupal-scaffold": {
-            "locations": {
-                "web-root": "web/"
-            }
-        },
+	      "locations": {
+		"web-root": "docroot/"
+	      },
+	      "file-mapping": {
+		"[web-root]/sites/default.services.yml": false,
+		"[web-root]/sites/default.settings.php": false
+	      }
+	    },
+
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/libraries/{$name}": ["type:drupal-library"],
