@@ -34,13 +34,17 @@ sudo cp /wwwroot/.webserverfiles/000-default.conf /etc/apache2/sites-available/0
 sudo cp /wwwroot/.webserverfiles/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 sudo cp /wwwroot/.webserverfiles/php.ini /etc/php/7.3/apache2/php.ini
 sudo cp /wwwroot/.webserverfiles/xdebug.ini /etc/php/7.3/mods-available/xdebug.ini
+
+###Making webserver run as vagrant user (to solve permission problems)
+echo "export APACHE_RUN_USER=vagrant">> /etc/apache2/envvars
+
 sudo a2enmod rewrite
 sudo a2enmod ssl
 sudo a2ensite default-ssl
 
 sudo usermod -a -G vagrant www-data
 
-sudo apachectl restart
+sudo systemctl restart apache2
 
 
 ##Composer installation
