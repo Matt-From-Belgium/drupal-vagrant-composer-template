@@ -53,18 +53,22 @@ composer install
 echo "alias drush='/wwwroot/vendor/drush/drush/drush'" >> /home/vagrant/.bashrc
 echo "alias drupal='/wwwroot/vendor/drupal/console/bin/drupal'" >> /home/vagrant/.bashrc
 
-#Append config directory to default settings
-echo "\$settings['config_sync_directory'] = '../config';" >> /wwwroot/web/sites/default/default.settings.php
 
-#Set *.intranet as trusted host
-echo "\$settings['trusted_host_patterns'] = ['^.+\.intranet$'];" >> /wwwroot/web/sites/default/default.settings.php
-
-#Set private file path
-echo "\$settings['file_private_path'] = '../private';" >> /wwwroot/web/sites/default/default.settings.php
 
 ###Install drupal and import configuration
 ./vendor/drush/drush/drush -y si minimal --db-url=mysql://root:vagrant@localhost/drupal --config-dir=/wwwroot/config --account-pass=admin
 ./vendor/drush/drush/drush -y cr
+
+sudo chmod 777 /wwwroot/web/sites/default/settings.php
+#Append config directory to default settings
+echo "\$settings['config_sync_directory'] = '../config';" >> /wwwroot/web/sites/default/settings.php
+
+#Set *.intranet as trusted host
+echo "\$settings['trusted_host_patterns'] = ['^.+\.intranet$'];" >> /wwwroot/web/sites/default/settings.php
+
+#Set private file path
+echo "\$settings['file_private_path'] = '../private';" >> /wwwroot/web/sites/default/settings.php
+sudo chmod 664 /wwwroot/web/sites/default/settings.php
 
 ###Run cron
 ./vendor/drush/drush/drush -y cron
