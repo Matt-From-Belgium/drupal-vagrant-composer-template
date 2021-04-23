@@ -17,7 +17,7 @@ debconf-set-selections <<< "phpmyadmin phpmyadmin/app-password-confirm password 
 
 ###Installing packages 
 sudo apt-get -y -qq install apache2 mysql-server php7.3 php7.3-mysql php7.3-gd php7.3-xml php7.3-mbstring zip unzip php7.3-zip php7.3-curl php7.3-bcmath openssl phpmyadmin
-sudo apt-get -y -qq install php-xdebug
+sudo apt-get -y -qq install php7.3-xdebug
 
 ###Setting PHP cli version to selected version
 sudo update-alternatives --set php /usr/bin/php7.3
